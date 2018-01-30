@@ -1,6 +1,6 @@
 Sub WallStreet():
 
-'Initialize variable to store the number of rows
+'Define variables
 Dim lastRow As Long
 Dim i, j As Long
 Dim TotalVolume As Double
