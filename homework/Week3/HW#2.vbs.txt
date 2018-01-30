@@ -1,3 +1,4 @@
+
 Sub WallStreet():
 
 'Define variables
@@ -28,71 +29,68 @@ For Each ws In Worksheets
         
         'Set the title for each of the columns in the each of the worksheets
         ws.Range("I1").Cells(1, 1).Value = "Ticker"
-        'Add opening price and closing price to support debugging of Yearly Change and Percent Change
         
+	'Add opening price and closing price to support debugging of Yearly Change and Percent Change
         'ws.Range("I1").Cells(1, 2).Value = "Opening Price"
         'ws.Range("I1").Cells(1, 3).Value = "Closing Price"
+	
         ws.Range("I1").Cells(1, 2).Value = "Yearly Change"
         ws.Range("I1").Cells(1, 3).Value = "Percent Change"
         ws.Range("I1").Cells(1, 4).Value = "Total Volume"
         
         'Adjust column width to fit text
-        
-        ws.Columns("I:N").AutoFit
+         ws.Columns("I:N").AutoFit
             
   
         Opening_Price = ws.Cells(2, 6).Value
-        
+        'Iterate through worksheet for all stock tickers
         For i = 2 To lastRow
             'Set the stock ticker
-            StockSymbol = ws.Cells(i, 1).Value
+             StockSymbol = ws.Cells(i, 1).Value
             
             'Step through and total volume while you are in the same symbol
-            
-    
-            If StockSymbol = PrevSymbol Then
+             If StockSymbol = PrevSymbol Then
 
-
-            'Iterate through each row of the sheet and total the volumes for each row
+                'Iterate through each row of the sheet and total the volumes for each row
     
-            TotalVolume = TotalVolume + ws.Cells(i, 7).Value
+                 TotalVolume = TotalVolume + ws.Cells(i, 7).Value
             Else
-            ' Set the final values for the variables
+                 ' Set the final values for the variables
         
-                Closing_Price = ws.Cells(i - 1, 6).Value
-                Total_Change = Closing_Price - Opening_Price
-                Percent_change = Format(((Closing_Price - Opening_Price) / Opening_Price), "0.00%")
+                 Closing_Price = ws.Cells(i - 1, 6).Value
+                 Total_Change = Closing_Price - Opening_Price
+                 Percent_change = Format(((Closing_Price - Opening_Price) / Opening_Price), "0.00%")
             
-            ' Post the results for each ticker in the worksheet
+                 ' Post the results for each ticker in the worksheet
             
-                ws.Range("I1").Cells(CurrentRow, 1).Value = PrevSymbol
-                ' Support debugging of total change and percent change calculations
-                'ws.Range("I1").Cells(CurrentRow, 2).Value = Opening_Price
+                 ws.Range("I1").Cells(CurrentRow, 1).Value = PrevSymbol
+                 ' Support debugging of total change and percent change calculations
+                 'ws.Range("I1").Cells(CurrentRow, 2).Value = Opening_Price
                 'ws.Range("I1").Cells(CurrentRow, 3).Value = Closing_Price
-                ws.Range("I1").Cells(CurrentRow, 2).Value = Total_Change
-                If Total_Change > 0 Then
-                    ws.Range("I1").Cells(CurrentRow, 2).Value = Total_Change
-                    ws.Range("I1").Cells(CurrentRow, 2).Interior.Color = 65280 ' Color cell interior green
-                ElseIf Total_Change < 0 Then
-                    ws.Range("I1").Cells(CurrentRow, 2).Value = Total_Change
-                    ws.Range("I1").Cells(CurrentRow, 2).Interior.Color = 255  ' Color cell interior red
-                    ws.Range("I1").Cells(CurrentRow, 2).Font.Color = 0 ' Represent negative numbers in black
-                End If
-                ws.Range("I1").Cells(CurrentRow, 2).Value = Total_Change
-                ws.Range("I1").Cells(CurrentRow, 3).Value = Percent_change
-                ws.Range("I1").Cells(CurrentRow, 4).Value = TotalVolume
+                 ws.Range("I1").Cells(CurrentRow, 2).Value = Total_Change
+                 If Total_Change > 0 Then
+                      ws.Range("I1").Cells(CurrentRow, 2).Value = Total_Change
+                      ws.Range("I1").Cells(CurrentRow, 2).Interior.Color = 65280 ' Color cell interior green
+                 ElseIf Total_Change < 0 Then
+                      ws.Range("I1").Cells(CurrentRow, 2).Value = Total_Change
+                      ws.Range("I1").Cells(CurrentRow, 2).Interior.Color = 255  ' Color cell interior red
+                      ws.Range("I1").Cells(CurrentRow, 2).Font.Color = 0 ' Represent negative numbers in black
+                 End If
+                 ws.Range("I1").Cells(CurrentRow, 2).Value = Total_Change
+                 ws.Range("I1").Cells(CurrentRow, 3).Value = Percent_change
+                 ws.Range("I1").Cells(CurrentRow, 4).Value = TotalVolume
                            
                   
             
-            ' Increment row counter
+                ' Increment row counter
                 CurrentRow = CurrentRow + 1
                 
            
-            'Set Total Volume and Openinng Price to the first volume and price for the new stock symbol
+                'Set Total Volume and Openinng Price to the first volume and price for the new stock symbol
                 TotalVolume = Cells(i, 7).Value
                 Opening_Price = Cells(i, 6).Value
             
-            'Set Prev Symbol to the new stock symbol
+                'Set Prev Symbol to the new stock symbol
                 PrevSymbol = StockSymbol
     
             End If
