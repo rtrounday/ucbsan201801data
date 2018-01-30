@@ -1,5 +1,7 @@
 Ray Trounday
+
 Date: 01/29/2018
+
 Unit 2 | Homework Assignment - Multiple Stock Data
 
 Description
