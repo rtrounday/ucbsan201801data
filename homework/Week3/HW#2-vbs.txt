@@ -18,7 +18,6 @@ lastRow = Cells(Rows.Count, 1).End(xlUp).Row
 RowLast = 2
 
 'Step through each worksheet and initialize variables
-
 For Each ws In Worksheets
 	' Initialize variables
         TotalVolume = 0
