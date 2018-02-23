@@ -886,64 +886,64 @@ city_rides.head(500)
 
     Port Johnstad           34
     Swansonbury             34
-    Port James              32
     South Louis             32
-    Williamshire            31
-    West Peter              31
+    Port James              32
     Jacobfort               31
+    West Peter              31
+    Williamshire            31
     Alvarezhaven            31
     Arnoldview              31
-    West Brandy             30
     Stewartview             30
-    Carrollfort             29
+    West Brandy             30
     West Oscar              29
+    Carrollfort             29
     West Dawnfurt           29
-    New David               28
-    Lisaville               28
-    East Erin               28
     New Andreamouth         28
     Kelseyland              28
-    Kimberlychester         27
-    Port Samantha           27
-    Sarabury                27
-    Smithhaven              27
+    East Erin               28
+    Lisaville               28
+    New David               28
     Edwardsbury             27
+    Port Samantha           27
     Sandymouth              27
+    Smithhaven              27
+    Sarabury                27
+    Kimberlychester         27
     Spencertown             26
-    Alyssaberg              26
-    Nguyenbury              26
     Torresshire             26
-    New Jeffrey             25
+    Nguyenbury              26
+    Alyssaberg              26
+    Lake Jennaton           25
                             ..
-    West Evan               12
-    Clarkstad               12
     Jasonfort               12
     South Joseph            12
+    Clarkstad               12
+    West Evan               12
+    Conwaymouth             11
+    East Leslie             11
     Williamchester          11
     New Michelleberg        11
-    East Leslie             11
-    Conwaymouth             11
+    Kennethburgh            10
+    East Stephen            10
     North Tracyfort         10
     North Whitney           10
-    Carrollbury             10
     Floresberg              10
-    East Stephen            10
-    Kennethburgh            10
+    Carrollbury             10
     Martinmouth              9
     Anitamouth               9
-    North Tara               9
     Hernandezshire           9
+    North Tara               9
     Erikport                 8
     West Kevintown           7
     East Troybury            7
     Shelbyhaven              6
     Kinghaven                6
     Jacksonfort              6
-    Stevensport              5
     South Elizabethmouth     5
+    Stevensport              5
     New Johnbury             4
-    Horneland                4
     Matthewside              4
+    Horneland                4
     Manuelchester            1
     Name: city, Length: 125, dtype: int64
 
@@ -1367,6 +1367,7 @@ city_ride.head(500)
 #Arrive at the average fare per city
 average_fare = city_ride.groupby('city').mean()
 average_fare = average_fare.drop('ride_id',1)
+average_fare['fare'] = average_fare['fare'].map("{:,.2f}".format)
 average_fare
 ```
 
@@ -1401,123 +1402,123 @@ average_fare
   <tbody>
     <tr>
       <th>Alvarezhaven</th>
-      <td>23.928710</td>
+      <td>23.93</td>
     </tr>
     <tr>
       <th>Alyssaberg</th>
-      <td>20.609615</td>
+      <td>20.61</td>
     </tr>
     <tr>
       <th>Anitamouth</th>
-      <td>37.315556</td>
+      <td>37.32</td>
     </tr>
     <tr>
       <th>Antoniomouth</th>
-      <td>23.625000</td>
+      <td>23.62</td>
     </tr>
     <tr>
       <th>Aprilchester</th>
-      <td>21.981579</td>
+      <td>21.98</td>
     </tr>
     <tr>
       <th>Arnoldview</th>
-      <td>25.106452</td>
+      <td>25.11</td>
     </tr>
     <tr>
       <th>Campbellport</th>
-      <td>33.711333</td>
+      <td>33.71</td>
     </tr>
     <tr>
       <th>Carrollbury</th>
-      <td>36.606000</td>
+      <td>36.61</td>
     </tr>
     <tr>
       <th>Carrollfort</th>
-      <td>25.395517</td>
+      <td>25.40</td>
     </tr>
     <tr>
       <th>Clarkstad</th>
-      <td>31.051667</td>
+      <td>31.05</td>
     </tr>
     <tr>
       <th>Conwaymouth</th>
-      <td>34.591818</td>
+      <td>34.59</td>
     </tr>
     <tr>
       <th>Davidtown</th>
-      <td>22.978095</td>
+      <td>22.98</td>
     </tr>
     <tr>
       <th>Davistown</th>
-      <td>21.497200</td>
+      <td>21.50</td>
     </tr>
     <tr>
       <th>East Cherylfurt</th>
-      <td>31.416154</td>
+      <td>31.42</td>
     </tr>
     <tr>
       <th>East Douglas</th>
-      <td>26.169091</td>
+      <td>26.17</td>
     </tr>
     <tr>
       <th>East Erin</th>
-      <td>24.478214</td>
+      <td>24.48</td>
     </tr>
     <tr>
       <th>East Jenniferchester</th>
-      <td>32.599474</td>
+      <td>32.60</td>
     </tr>
     <tr>
       <th>East Leslie</th>
-      <td>33.660909</td>
+      <td>33.66</td>
     </tr>
     <tr>
       <th>East Stephen</th>
-      <td>39.053000</td>
+      <td>39.05</td>
     </tr>
     <tr>
       <th>East Troybury</th>
-      <td>33.244286</td>
+      <td>33.24</td>
     </tr>
     <tr>
       <th>Edwardsbury</th>
-      <td>26.876667</td>
+      <td>26.88</td>
     </tr>
     <tr>
       <th>Erikport</th>
-      <td>30.043750</td>
+      <td>30.04</td>
     </tr>
     <tr>
       <th>Eriktown</th>
-      <td>25.478947</td>
+      <td>25.48</td>
     </tr>
     <tr>
       <th>Floresberg</th>
-      <td>32.310000</td>
+      <td>32.31</td>
     </tr>
     <tr>
       <th>Fosterside</th>
-      <td>23.034583</td>
+      <td>23.03</td>
     </tr>
     <tr>
       <th>Hernandezshire</th>
-      <td>32.002222</td>
+      <td>32.00</td>
     </tr>
     <tr>
       <th>Horneland</th>
-      <td>21.482500</td>
+      <td>21.48</td>
     </tr>
     <tr>
       <th>Jacksonfort</th>
-      <td>32.006667</td>
+      <td>32.01</td>
     </tr>
     <tr>
       <th>Jacobfort</th>
-      <td>24.779355</td>
+      <td>24.78</td>
     </tr>
     <tr>
       <th>Jasonfort</th>
-      <td>27.831667</td>
+      <td>27.83</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1525,123 +1526,123 @@ average_fare
     </tr>
     <tr>
       <th>South Roy</th>
-      <td>26.031364</td>
+      <td>26.03</td>
     </tr>
     <tr>
       <th>South Shannonborough</th>
-      <td>26.516667</td>
+      <td>26.52</td>
     </tr>
     <tr>
       <th>Spencertown</th>
-      <td>23.681154</td>
+      <td>23.68</td>
     </tr>
     <tr>
       <th>Stevensport</th>
-      <td>31.948000</td>
+      <td>31.95</td>
     </tr>
     <tr>
       <th>Stewartview</th>
-      <td>21.614000</td>
+      <td>21.61</td>
     </tr>
     <tr>
       <th>Swansonbury</th>
-      <td>27.464706</td>
+      <td>27.46</td>
     </tr>
     <tr>
       <th>Thomastown</th>
-      <td>30.308333</td>
+      <td>30.31</td>
     </tr>
     <tr>
       <th>Tiffanyton</th>
-      <td>28.510000</td>
+      <td>28.51</td>
     </tr>
     <tr>
       <th>Torresshire</th>
-      <td>24.207308</td>
+      <td>24.21</td>
     </tr>
     <tr>
       <th>Travisville</th>
-      <td>27.220870</td>
+      <td>27.22</td>
     </tr>
     <tr>
       <th>Vickimouth</th>
-      <td>21.474667</td>
+      <td>21.47</td>
     </tr>
     <tr>
       <th>Webstertown</th>
-      <td>29.721250</td>
+      <td>29.72</td>
     </tr>
     <tr>
       <th>West Alexis</th>
-      <td>19.523000</td>
+      <td>19.52</td>
     </tr>
     <tr>
       <th>West Brandy</th>
-      <td>24.157667</td>
+      <td>24.16</td>
     </tr>
     <tr>
       <th>West Brittanyton</th>
-      <td>25.436250</td>
+      <td>25.44</td>
     </tr>
     <tr>
       <th>West Dawnfurt</th>
-      <td>22.330345</td>
+      <td>22.33</td>
     </tr>
     <tr>
       <th>West Evan</th>
-      <td>27.013333</td>
+      <td>27.01</td>
     </tr>
     <tr>
       <th>West Jefferyfurt</th>
-      <td>21.072857</td>
+      <td>21.07</td>
     </tr>
     <tr>
       <th>West Kevintown</th>
-      <td>21.528571</td>
+      <td>21.53</td>
     </tr>
     <tr>
       <th>West Oscar</th>
-      <td>24.280000</td>
+      <td>24.28</td>
     </tr>
     <tr>
       <th>West Pamelaborough</th>
-      <td>33.799286</td>
+      <td>33.80</td>
     </tr>
     <tr>
       <th>West Paulport</th>
-      <td>33.278235</td>
+      <td>33.28</td>
     </tr>
     <tr>
       <th>West Peter</th>
-      <td>24.875484</td>
+      <td>24.88</td>
     </tr>
     <tr>
       <th>West Sydneyhaven</th>
-      <td>22.368333</td>
+      <td>22.37</td>
     </tr>
     <tr>
       <th>West Tony</th>
-      <td>29.609474</td>
+      <td>29.61</td>
     </tr>
     <tr>
       <th>Williamchester</th>
-      <td>34.278182</td>
+      <td>34.28</td>
     </tr>
     <tr>
       <th>Williamshire</th>
-      <td>26.990323</td>
+      <td>26.99</td>
     </tr>
     <tr>
       <th>Wiseborough</th>
-      <td>22.676842</td>
+      <td>22.68</td>
     </tr>
     <tr>
       <th>Yolandafurt</th>
-      <td>27.205500</td>
+      <td>27.21</td>
     </tr>
     <tr>
       <th>Zimmermanmouth</th>
-      <td>28.301667</td>
+      <td>28.30</td>
     </tr>
   </tbody>
 </table>
@@ -1662,7 +1663,15 @@ w = city_type
 
 
 ```python
-plt.scatter(x,y, s=z*10, c=x,  alpha=.4, edgecolors="grey")
+ax = plt.gca()
+```
+
+
+```python
+#plt.yticks(20,30, 2)
+plt.figure(figsize = (20,10))
+plt.ylim(15,70)
+plt.scatter(x,y, s=z*40, c=x,  alpha=.4, edgecolors="grey")
 plt.ylabel("Average Fare ($)")
 plt.xlabel("Total Number of Rides (Per City)")
 plt.legend()
@@ -1670,7 +1679,7 @@ plt.show()
 ```
 
 
-![png](output_10_0.png)
+![png](output_11_0.png)
 
 
 
@@ -1689,7 +1698,7 @@ fare_by_type
 
 
 
-    <pandas.core.groupby.DataFrameGroupBy object at 0x000002F05EADE5F8>
+    <pandas.core.groupby.DataFrameGroupBy object at 0x00000253A345D710>
 
 
 
@@ -1733,10 +1742,17 @@ rural_fare_percentage
 ```
 
 
+    ---------------------------------------------------------------------------
 
+    NameError                                 Traceback (most recent call last)
 
-    6.5797864575859402
+    <ipython-input-16-4e1f96a6c74d> in <module>()
+          1 #Arrive at rural fare percentage
+    ----> 2 rural_fare_percentage = (sum_fares_by_type[0] / total_fare) * 100
+          3 rural_fare_percentage
+    
 
+    NameError: name 'total_fare' is not defined
 
 
 
@@ -1747,25 +1763,11 @@ suburban_fare_percentage
 ```
 
 
-
-
-    31.445750305555393
-
-
-
-
 ```python
 #Arrive at urban fare percentage
 urban_fare_percentage = (sum_fares_by_type[2] / total_fare) * 100
 urban_fare_percentage
 ```
-
-
-
-
-    61.974463236858632
-
-
 
 
 ```python
@@ -1784,34 +1786,9 @@ plt.pie(fare_percentages, explode=explode, labels=labels, colors=colors,
 ```
 
 
-
-
-    ([<matplotlib.patches.Wedge at 0x2f05ef58cc0>,
-      <matplotlib.patches.Wedge at 0x2f05ef36b38>,
-      <matplotlib.patches.Wedge at 0x2f0600e8908>],
-     [Text(-0.969829,0.519068,'Rural'),
-      Text(-0.839065,-0.711316,'Suburban'),
-      Text(1.05512,0.571596,'Urban')],
-     [Text(-0.528998,0.283128,'6.6%'),
-      Text(-0.457672,-0.387991,'31.4%'),
-      Text(0.615487,0.333431,'62.0%')])
-
-
-
-
 ```python
 plt.axis("equal")
 ```
-
-
-
-
-    (-1.1176639226730507,
-     1.1945670777444062,
-     -1.1162114572424728,
-     1.1625457019480223)
-
-
 
 
 ```python
@@ -1820,20 +1797,9 @@ plt.legend()
 ```
 
 
-
-
-    <matplotlib.legend.Legend at 0x2f05ead94a8>
-
-
-
-
 ```python
 plt.show()
 ```
-
-
-![png](output_22_0.png)
-
 
 
 ```python
@@ -1843,28 +1809,11 @@ ride_type_combined
 ```
 
 
-
-
-    Urban       1625
-    Suburban     657
-    Rural        125
-    Name: type, dtype: int64
-
-
-
-
 ```python
 #Arrive at total rides for all types
 total_ride_type_combined = ride_type_combined.sum()
 total_ride_type_combined
 ```
-
-
-
-
-    2407
-
-
 
 
 ```python
@@ -1874,13 +1823,6 @@ urban_ride_percentage
 ```
 
 
-
-
-    67.511425010386375
-
-
-
-
 ```python
 #Arrive at percentage of rides that were Suburban type
 suburban_ride_percentage = (ride_type_combined[1] / total_ride_type_combined) * 100
@@ -1888,25 +1830,11 @@ suburban_ride_percentage
 ```
 
 
-
-
-    27.295388450353137
-
-
-
-
 ```python
 #Arrive at percentage of rides that were Rural type
 rural_ride_percentage = (ride_type_combined[2] / total_ride_type_combined) * 100
 rural_ride_percentage
 ```
-
-
-
-
-    5.1931865392604903
-
-
 
 
 ```python
@@ -1925,34 +1853,9 @@ plt.pie(ride_percentages, explode=explode, labels=labels, colors=colors,
 ```
 
 
-
-
-    ([<matplotlib.patches.Wedge at 0x2f05ec13860>,
-      <matplotlib.patches.Wedge at 0x2f05eca27f0>,
-      <matplotlib.patches.Wedge at 0x2f05eca2b00>],
-     [Text(-0.176945,-1.18688,'Urban'),
-      Text(0.336761,1.04718,'Suburban'),
-      Text(-0.716613,0.834545,'Rural')],
-     [Text(-0.103218,-0.692348,'67.5%'),
-      Text(0.183688,0.571191,'27.3%'),
-      Text(-0.39088,0.455206,'5.2%')])
-
-
-
-
 ```python
 plt.axis("equal")
 ```
-
-
-
-
-    (-1.1318994832365503,
-     1.1012791042292325,
-     -1.2203949220705712,
-     1.1161315840497759)
-
-
 
 
 ```python
@@ -1961,20 +1864,9 @@ plt.legend()
 ```
 
 
-
-
-    <matplotlib.legend.Legend at 0x2f0600eeac8>
-
-
-
-
 ```python
 plt.show()
 ```
-
-
-![png](output_32_0.png)
-
 
 
 ```python
@@ -1987,66 +1879,11 @@ driver_city_type
 ```
 
 
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>driver_count</th>
-    </tr>
-    <tr>
-      <th>type</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>Rural</th>
-      <td>104</td>
-    </tr>
-    <tr>
-      <th>Suburban</th>
-      <td>638</td>
-    </tr>
-    <tr>
-      <th>Urban</th>
-      <td>2607</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
-
 ```python
 #Arrive at total for all drivers by city type
 sum_of_driver_type = driver_city_type.sum()
 sum_of_driver_type
 ```
-
-
-
-
-    driver_count    3349
-    dtype: int64
-
-
 
 
 ```python
@@ -2057,13 +1894,6 @@ rural_driver_type_percentage
 ```
 
 
-
-
-    3.1054045983875787
-
-
-
-
 ```python
 #Arrive at percentage for suburban drivers by city type
 suburban_driver_type_percentage = (driver_city_type.driver_count[1]/sum_of_driver_type) * 100
@@ -2072,26 +1902,12 @@ suburban_driver_type_percentage
 ```
 
 
-
-
-    19.050462824723798
-
-
-
-
 ```python
 #Arrive at percentage for urban drivers by city type
 urban_driver_type_percentage = (driver_city_type.driver_count[2]/sum_of_driver_type) * 100
 urban_driver_type_percentage = urban_driver_type_percentage[0]
 urban_driver_type_percentage
 ```
-
-
-
-
-    77.844132576888626
-
-
 
 
 ```python
@@ -2110,34 +1926,9 @@ plt.pie(driver_percentages, explode=explode, labels=labels, colors=colors,
 ```
 
 
-
-
-    ([<matplotlib.patches.Wedge at 0x2f05e11a908>,
-      <matplotlib.patches.Wedge at 0x2f05e115390>,
-      <matplotlib.patches.Wedge at 0x2f05e115e10>],
-     [Text(0.210841,-1.18133,'Urban'),
-      Text(-0.0868735,1.09656,'Suburban'),
-      Text(-0.76977,0.785782,'Rural')],
-     [Text(0.12299,-0.689111,'77.8%'),
-      Text(-0.0473856,0.598126,'19.1%'),
-      Text(-0.419875,0.428608,'3.1%')])
-
-
-
-
 ```python
 plt.axis("equal")
 ```
-
-
-
-
-    (-1.0880026969037266,
-     1.1227236235364879,
-     -1.2090679497025423,
-     1.1185492933278534)
-
-
 
 
 ```python
@@ -2146,17 +1937,6 @@ plt.legend()
 ```
 
 
-
-
-    <matplotlib.legend.Legend at 0x2f05ffb5320>
-
-
-
-
 ```python
 plt.show()
 ```
-
-
-![png](output_42_0.png)
-
