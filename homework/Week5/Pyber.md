@@ -884,63 +884,63 @@ city_rides.head(500)
 
 
 
-    Port Johnstad           34
     Swansonbury             34
+    Port Johnstad           34
     South Louis             32
     Port James              32
-    Jacobfort               31
-    West Peter              31
     Williamshire            31
+    Jacobfort               31
     Alvarezhaven            31
     Arnoldview              31
-    Stewartview             30
+    West Peter              31
     West Brandy             30
+    Stewartview             30
     West Oscar              29
     Carrollfort             29
     West Dawnfurt           29
-    New Andreamouth         28
-    Kelseyland              28
     East Erin               28
     Lisaville               28
+    Kelseyland              28
+    New Andreamouth         28
     New David               28
-    Edwardsbury             27
+    Kimberlychester         27
     Port Samantha           27
+    Edwardsbury             27
     Sandymouth              27
     Smithhaven              27
     Sarabury                27
-    Kimberlychester         27
+    Alyssaberg              26
+    Nguyenbury              26
     Spencertown             26
     Torresshire             26
-    Nguyenbury              26
-    Alyssaberg              26
-    Lake Jennaton           25
+    New Jeffrey             25
                             ..
-    Jasonfort               12
     South Joseph            12
     Clarkstad               12
     West Evan               12
+    Jasonfort               12
     Conwaymouth             11
-    East Leslie             11
-    Williamchester          11
     New Michelleberg        11
-    Kennethburgh            10
-    East Stephen            10
+    Williamchester          11
+    East Leslie             11
     North Tracyfort         10
-    North Whitney           10
     Floresberg              10
+    North Whitney           10
+    East Stephen            10
+    Kennethburgh            10
     Carrollbury             10
-    Martinmouth              9
-    Anitamouth               9
     Hernandezshire           9
+    Martinmouth              9
     North Tara               9
+    Anitamouth               9
     Erikport                 8
     West Kevintown           7
     East Troybury            7
-    Shelbyhaven              6
     Kinghaven                6
     Jacksonfort              6
-    South Elizabethmouth     5
+    Shelbyhaven              6
     Stevensport              5
+    South Elizabethmouth     5
     New Johnbury             4
     Matthewside              4
     Horneland                4
@@ -1663,23 +1663,38 @@ w = city_type
 
 
 ```python
-ax = plt.gca()
+#ax = plt.gca()
 ```
 
 
 ```python
 #plt.yticks(20,30, 2)
-plt.figure(figsize = (20,10))
-plt.ylim(15,70)
-plt.scatter(x,y, s=z*40, c=x,  alpha=.4, edgecolors="grey")
+#plt.figure(figsize = (20,10))
+#plt.ylim(0,40)
+#plt.scatter(x,y, s=z*40, c=x,  alpha=.4, edgecolors="grey")
+#plt.scatter(x,y,z,w, 'filled')
+#plt.ylabel("Average Fare ($)")
+#plt.xlabel("Total Number of Rides (Per City)")
+#plt.grid()
+#plt.show()
+```
+
+
+```python
+cm = plt.cm.get_cmap('jet')
+fig, ax = plt.subplots()
+sc = ax.scatter(x,y,s=z*10,c=x,cmap=cm,linewidth=0,alpha=0.5)
+ax.grid()
+fig.colorbar(sc)
+plt.ylim(10,40)
 plt.ylabel("Average Fare ($)")
 plt.xlabel("Total Number of Rides (Per City)")
-plt.legend()
+plt.title("Pyber Ride Sharing Data (2016)")
 plt.show()
 ```
 
 
-![png](output_11_0.png)
+![png](output_12_0.png)
 
 
 
@@ -1698,7 +1713,7 @@ fare_by_type
 
 
 
-    <pandas.core.groupby.DataFrameGroupBy object at 0x00000253A345D710>
+    <pandas.core.groupby.DataFrameGroupBy object at 0x00000167D8A55F98>
 
 
 
@@ -1737,37 +1752,44 @@ total_fare_revenue
 
 ```python
 #Arrive at rural fare percentage
-rural_fare_percentage = (sum_fares_by_type[0] / total_fare) * 100
+rural_fare_percentage = (sum_fares_by_type[0] / total_fare_revenue) * 100
 rural_fare_percentage
 ```
 
 
-    ---------------------------------------------------------------------------
 
-    NameError                                 Traceback (most recent call last)
 
-    <ipython-input-16-4e1f96a6c74d> in <module>()
-          1 #Arrive at rural fare percentage
-    ----> 2 rural_fare_percentage = (sum_fares_by_type[0] / total_fare) * 100
-          3 rural_fare_percentage
-    
+    6.5797864575859402
 
-    NameError: name 'total_fare' is not defined
 
 
 
 ```python
 #Arrive at suburban fare percentage
-suburban_fare_percentage = (sum_fares_by_type[1] / total_fare) * 100
+suburban_fare_percentage = (sum_fares_by_type[1] / total_fare_revenue) * 100
 suburban_fare_percentage
 ```
 
 
+
+
+    31.445750305555393
+
+
+
+
 ```python
 #Arrive at urban fare percentage
-urban_fare_percentage = (sum_fares_by_type[2] / total_fare) * 100
+urban_fare_percentage = (sum_fares_by_type[2] / total_fare_revenue) * 100
 urban_fare_percentage
 ```
+
+
+
+
+    61.974463236858632
+
+
 
 
 ```python
@@ -1786,9 +1808,34 @@ plt.pie(fare_percentages, explode=explode, labels=labels, colors=colors,
 ```
 
 
+
+
+    ([<matplotlib.patches.Wedge at 0x167d83af048>,
+      <matplotlib.patches.Wedge at 0x167d84b5940>,
+      <matplotlib.patches.Wedge at 0x167d84b57f0>],
+     [Text(-0.969829,0.519068,'Rural'),
+      Text(-0.839065,-0.711316,'Suburban'),
+      Text(1.05512,0.571596,'Urban')],
+     [Text(-0.528998,0.283128,'6.6%'),
+      Text(-0.457672,-0.387991,'31.4%'),
+      Text(0.615487,0.333431,'62.0%')])
+
+
+
+
 ```python
 plt.axis("equal")
 ```
+
+
+
+
+    (-1.1176639226730507,
+     1.1945670777444062,
+     -1.1162114572424728,
+     1.1625457019480223)
+
+
 
 
 ```python
@@ -1797,9 +1844,20 @@ plt.legend()
 ```
 
 
+
+
+    <matplotlib.legend.Legend at 0x167d8bfcac8>
+
+
+
+
 ```python
 plt.show()
 ```
+
+
+![png](output_24_0.png)
+
 
 
 ```python
@@ -1809,11 +1867,28 @@ ride_type_combined
 ```
 
 
+
+
+    Urban       1625
+    Suburban     657
+    Rural        125
+    Name: type, dtype: int64
+
+
+
+
 ```python
 #Arrive at total rides for all types
 total_ride_type_combined = ride_type_combined.sum()
 total_ride_type_combined
 ```
+
+
+
+
+    2407
+
+
 
 
 ```python
@@ -1823,6 +1898,13 @@ urban_ride_percentage
 ```
 
 
+
+
+    67.511425010386375
+
+
+
+
 ```python
 #Arrive at percentage of rides that were Suburban type
 suburban_ride_percentage = (ride_type_combined[1] / total_ride_type_combined) * 100
@@ -1830,11 +1912,25 @@ suburban_ride_percentage
 ```
 
 
+
+
+    27.295388450353137
+
+
+
+
 ```python
 #Arrive at percentage of rides that were Rural type
 rural_ride_percentage = (ride_type_combined[2] / total_ride_type_combined) * 100
 rural_ride_percentage
 ```
+
+
+
+
+    5.1931865392604903
+
+
 
 
 ```python
@@ -1853,9 +1949,34 @@ plt.pie(ride_percentages, explode=explode, labels=labels, colors=colors,
 ```
 
 
+
+
+    ([<matplotlib.patches.Wedge at 0x167d85018d0>,
+      <matplotlib.patches.Wedge at 0x167d8507978>,
+      <matplotlib.patches.Wedge at 0x167d850f400>],
+     [Text(-0.176945,-1.18688,'Urban'),
+      Text(0.336761,1.04718,'Suburban'),
+      Text(-0.716613,0.834545,'Rural')],
+     [Text(-0.103218,-0.692348,'67.5%'),
+      Text(0.183688,0.571191,'27.3%'),
+      Text(-0.39088,0.455206,'5.2%')])
+
+
+
+
 ```python
 plt.axis("equal")
 ```
+
+
+
+
+    (-1.1318994832365503,
+     1.1012791042292325,
+     -1.2203949220705712,
+     1.1161315840497759)
+
+
 
 
 ```python
@@ -1864,9 +1985,20 @@ plt.legend()
 ```
 
 
+
+
+    <matplotlib.legend.Legend at 0x167d8b14710>
+
+
+
+
 ```python
 plt.show()
 ```
+
+
+![png](output_34_0.png)
+
 
 
 ```python
@@ -1879,11 +2011,66 @@ driver_city_type
 ```
 
 
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>driver_count</th>
+    </tr>
+    <tr>
+      <th>type</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Rural</th>
+      <td>104</td>
+    </tr>
+    <tr>
+      <th>Suburban</th>
+      <td>638</td>
+    </tr>
+    <tr>
+      <th>Urban</th>
+      <td>2607</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
 ```python
 #Arrive at total for all drivers by city type
 sum_of_driver_type = driver_city_type.sum()
 sum_of_driver_type
 ```
+
+
+
+
+    driver_count    3349
+    dtype: int64
+
+
 
 
 ```python
@@ -1894,6 +2081,13 @@ rural_driver_type_percentage
 ```
 
 
+
+
+    3.1054045983875787
+
+
+
+
 ```python
 #Arrive at percentage for suburban drivers by city type
 suburban_driver_type_percentage = (driver_city_type.driver_count[1]/sum_of_driver_type) * 100
@@ -1902,12 +2096,26 @@ suburban_driver_type_percentage
 ```
 
 
+
+
+    19.050462824723798
+
+
+
+
 ```python
 #Arrive at percentage for urban drivers by city type
 urban_driver_type_percentage = (driver_city_type.driver_count[2]/sum_of_driver_type) * 100
 urban_driver_type_percentage = urban_driver_type_percentage[0]
 urban_driver_type_percentage
 ```
+
+
+
+
+    77.844132576888626
+
+
 
 
 ```python
@@ -1926,9 +2134,34 @@ plt.pie(driver_percentages, explode=explode, labels=labels, colors=colors,
 ```
 
 
+
+
+    ([<matplotlib.patches.Wedge at 0x167d87bc400>,
+      <matplotlib.patches.Wedge at 0x167d87c45f8>,
+      <matplotlib.patches.Wedge at 0x167d87c44e0>],
+     [Text(0.210841,-1.18133,'Urban'),
+      Text(-0.0868735,1.09656,'Suburban'),
+      Text(-0.76977,0.785782,'Rural')],
+     [Text(0.12299,-0.689111,'77.8%'),
+      Text(-0.0473856,0.598126,'19.1%'),
+      Text(-0.419875,0.428608,'3.1%')])
+
+
+
+
 ```python
 plt.axis("equal")
 ```
+
+
+
+
+    (-1.0880026969037266,
+     1.1227236235364879,
+     -1.2090679497025423,
+     1.1185492933278534)
+
+
 
 
 ```python
@@ -1937,6 +2170,17 @@ plt.legend()
 ```
 
 
+
+
+    <matplotlib.legend.Legend at 0x167d8c01780>
+
+
+
+
 ```python
 plt.show()
 ```
+
+
+![png](output_44_0.png)
+
