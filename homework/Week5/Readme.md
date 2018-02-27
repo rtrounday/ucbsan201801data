@@ -12,7 +12,7 @@ addition, we produced pie charts for % of Total fare, Total rides and Total Driv
 
 ## Report Questions
 
-What are the three conclusions we can make about the Game campaign given the provided data?
+What are the three conclusions we can make about Pyber riders given the provided data?
 
 1. Large percentage of drivers and revenue come from Urban areas
 2. Surburban represents a significant percentage of revenue
