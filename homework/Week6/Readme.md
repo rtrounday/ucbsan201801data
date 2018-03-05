@@ -7,8 +7,8 @@
 
 In this assignment, we created a Python script to visualize the weather of 500+ cities 
 across the world of varying distance from the equator. To accomplish this, we utilized
-utilizing a simple Python libraries: OpenWeatherMap API, CitiPy.  In addition, we created
-scatterplot to evaluate relationships of latitude on temperature, winds, cloudiness and 
+simple Python libraries: OpenWeatherMap API, CitiPy.  In addition, we created
+scatterplots to evaluate relationships of latitude on temperature, winds, cloudiness and 
 humidity
 
 ## Report Questions
