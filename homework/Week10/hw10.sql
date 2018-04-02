@@ -17,3 +17,19 @@ SELECT actor_id, first_name, last_name FROM sakila.actor WHERE last_name LIKE '%
 # 2c. Find all actors whose last names contain the letters `LI`. This time, order the rows by last name and first name, in that order:
 
 SELECT actor_id, first_name, last_name FROM sakila.actor WHERE last_name LIKE '%LI%' ORDER BY last_name;
+
+#\2d. Using `IN`, display the `country_id` and `country` columns of the following countries: Afghanistan, Bangladesh, and China
+
+SELECT country_id, country FROM sakila.country WHERE country IN ('Afghanistan', 'Bangladesh' , 'China');
+
+# 3a. Add a `middle_name` column to the table `actor`. Position it between `first_name` and `last_name`. Hint: you will need to specify the data type.
+
+ALTER TABLE sakila.actor ADD middle_name VARCHAR (45);
+
+#UPDATE information_schema.columns SET ORDINAL_POSITION = 3 WHERE TABLE_NAME = 'ACTOR' AND COLUMN_NAME = 'middle_name'
+#UPDATE [information_schema].[columns] SET ORDINAL_POSITION = 4 WHERE TABLE_NAME = 'ACTOR' AND COLUMN_NAME = 'last_name'
+
+
+#* 3b. You realize that some of these actors have tremendously long last names. Change the data type of the `middle_name` column to `blobs`.
+
+ALTER TABLE sakila.actor ALTER COLUMN middle_name blob
