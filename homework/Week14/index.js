@@ -1,13 +1,15 @@
 // Get references to the tbody element, input field and button
 var $tbody = document.querySelector("tbody");
-var $datatimeInput = document.querySelector("#data-time");
+var $datatimeInput = document.querySelector("#date");
 var $searchBtn = document.querySelector("#search");
 
 // Add an event listener to the searchButton, call handleSearchButtonClick when clicked
 $searchBtn.addEventListener("click", handleSearchButtonClick);
 
-// Set filteredAddresses to addressData initially
-var filterSightings = data;
+// Set filterSightings to Sighting Data initially
+
+document.write("<script src='data.js' type='text/javascript'></script>");
+var filterSightings = dataSet;
 
 // renderTable renders the filteredAddresses to the tbody
 function renderTable() {
@@ -32,11 +34,11 @@ function handleSearchButtonClick() {
   var filterSighting = $datetimeInput.value.trim().toLowerCase();
 
   // Set filteredAddresses to an array of all addresses whose "state" matches the filter
-  filteredSightings = data.filter(function(address) {
-    var addressState = address.state.toLowerCase();
+  filteredSightings = data.filter(function(sighting) {
+    var sightingState = sighting.state.toLowerCase();
 
     // If true, add the address to the filteredAddresses, otherwise don't add it to filteredAddresses
-    return addressState === filterState;
+    return sightingState === filterSighting;
   });
   renderTable();
 }
