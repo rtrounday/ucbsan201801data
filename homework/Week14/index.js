@@ -1,19 +1,29 @@
 // Get references to the tbody element, input field and button
 var $tbody = document.querySelector("tbody");
-var $datatimeInput = document.querySelector("#date");
+var $datatimeInput = document.querySelector("#datetime");
+
+
 var $searchBtn = document.querySelector("#search");
+document.write("<script src='data.js' type='text/javascript'></script>");
+var filterSightings = dataSet;
+renderTable(null);
 
 // Add an event listener to the searchButton, call handleSearchButtonClick when clicked
 $searchBtn.addEventListener("click", handleSearchButtonClick);
 
 // Set filterSightings to Sighting Data initially
 
-document.write("<script src='data.js' type='text/javascript'></script>");
-var filterSightings = dataSet;
-
 // renderTable renders the filteredAddresses to the tbody
-function renderTable() {
+function renderTable(filteredSightings) {
+  if(filteredSightings == null){
+     filteredSightings = dataSet;
+  }
+
   $tbody.innerHTML = "";
+  $tbody = document.querySelector("tbody");
+  var trIds = document.querySelectorAll("tr");
+  console.log("Rows after clearing the tbody "+trIds.length);
+  console.log($tbody+"Last render call "+filteredSightings.length);
   for (var i = 0; i < filterSightings.length; i++) {
     // Get get the current sighting object and its fields
     var sighting = filterSightings[i];
@@ -29,19 +39,24 @@ function renderTable() {
   }
 }
 
+
+
 function handleSearchButtonClick() {
+  var datatimeInput = document.querySelector("#date").value;
+
   // Format the user's search by removing leading and trailing whitespace, lowercase the string
-  var filterSighting = $datetimeInput.value.trim().toLowerCase();
-
-  // Set filteredAddresses to an array of all addresses whose "state" matches the filter
-  filteredSightings = data.filter(function(sighting) {
-    var sightingState = sighting.state.toLowerCase();
-
-    // If true, add the address to the filteredAddresses, otherwise don't add it to filteredAddresses
-    return sightingState === filterSighting;
-  });
-  renderTable();
+  var filterSighting = datatimeInput.trim().toLowerCase();
+  var tr = document.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filterSighting) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
 }
 
 // Render the table for the first time on page load
-renderTable();
