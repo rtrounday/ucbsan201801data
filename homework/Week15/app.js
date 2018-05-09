@@ -65,9 +65,9 @@ function renderCircles(circlesGroup, newXScale, chosenXaxis) {
 function updateToolTip(chosenXAxis, circlesGroup) {
 
    if (chosenXAxis == "poverty") {
-     var label = "% below Poverty line"
+     var label = "Health: "
    } else {
-     var label = "Health"
+     var label = "% below Poverty line: "
    }
 
   var toolTip = d3.tip()
@@ -138,7 +138,7 @@ d3.csv("healthData.csv", function (err, healthData) {
   var labelsGroup = chartGroup.append("g")
     .attr("transform", `translate(${width/2}, ${height + 20})`)
 
-  var hairLengthLabel = labelsGroup.append("text")
+  var povertyLabel = labelsGroup.append("text")
     .attr("x", 0)
     .attr("y", 20)
     .attr("value", "poverty") //value to grab for event listener
@@ -189,22 +189,7 @@ d3.csv("healthData.csv", function (err, healthData) {
         // updates tooltips with new info
         circlesGroup = updateToolTip(chosenXAxis, circlesGroup);
 
-        // changes classes to change bold text
-//        if (chosenXAxis == "health") {
-//          albumsLabel
-//            .classed("active", true)
-//            .classed("inactive", false)
-//          hairLengthLabel
-//            .classed("active", false)
-//            .classed("inactive", true)
-//        } else {
-//          albumsLabel
-//            .classed("active", false)
-//            .classed("inactive", true)
-//          hairLengthLabel
-//            .classed("active", true)
-//            .classed("inactive", false)
-//        };
-//      };
+        
+
     });
 //};
